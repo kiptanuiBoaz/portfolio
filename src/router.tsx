@@ -5,8 +5,12 @@ import { routeTree } from "./routeTree.gen";
 export const getRouter = () => {
   const queryClient = new QueryClient();
 
+  // "/" locally and on Lovable; "/<repo>/" when built for a GitHub Pages project site.
+  const basepath = import.meta.env.BASE_URL || "/";
+
   const router = createRouter({
     routeTree,
+    basepath,
     context: { queryClient },
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
