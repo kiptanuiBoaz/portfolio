@@ -1,9 +1,38 @@
-import Link from "next/link";
-import Image from "next/image";
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 
 import { projects } from "@/data/portfolio";
 
-export function ProjectNotFound() {
+export const Route = createFileRoute("/projects/$slug")({
+  loader: ({ params }) => {
+    const project = projects.find((p) => p.slug === params.slug);
+    if (!project) throw notFound();
+    return { project };
+  },
+  head: ({ loaderData }) => {
+    if (!loaderData) {
+      return {
+        meta: [
+          { title: "Project unavailable — Boaz Serem" },
+          { name: "robots", content: "noindex" },
+        ],
+      };
+    }
+    const { project } = loaderData;
+    const title = `${project.name} — Boaz Serem`;
+    return {
+      meta: [
+        { title },
+        { name: "description", content: project.summary },
+        { property: "og:title", content: title },
+        { property: "og:description", content: project.summary },
+      ],
+    };
+  },
+  component: ProjectPage,
+  notFoundComponent: ProjectNotFound,
+});
+
+function ProjectNotFound() {
   return (
     <div className="mx-auto flex min-h-screen max-w-[1180px] flex-col justify-center px-6 sm:px-10">
       <div className="label-mono text-primary">404</div>
@@ -11,7 +40,7 @@ export function ProjectNotFound() {
         That project isn't in the register.
       </h1>
       <Link
-        href="/"
+        to="/"
         className="label-mono mt-8 inline-flex w-fit items-center gap-2 border-b border-input pb-1 transition-colors duration-300 hover:border-primary hover:text-primary"
       >
         <span className="text-primary">←</span> Back to portfolio
@@ -20,9 +49,8 @@ export function ProjectNotFound() {
   );
 }
 
-export function ProjectPage({ slug }: { slug: string }) {
-  const project = projects.find((item) => item.slug === slug);
-  if (!project) return null;
+function ProjectPage() {
+  const { project } = Route.useLoaderData();
   const index = projects.findIndex((p) => p.slug === project.slug);
   const next = projects[(index + 1) % projects.length]!;
 
@@ -32,13 +60,14 @@ export function ProjectPage({ slug }: { slug: string }) {
 
       <div className="relative mx-auto max-w-[1180px] px-6 sm:px-10">
         <header className="flex items-center justify-between border-b border-border py-8">
-          <Link href="/" className="font-display text-sm tracking-tight">
+          <Link to="/" className="font-display text-sm tracking-tight">
             <span className="text-primary">BK</span>
             <span className="mx-2 text-foreground/30">/</span>
             <span className="text-foreground/70">Serem</span>
           </Link>
           <Link
-            href="/#work"
+            to="/"
+            hash="work"
             className="label-mono text-foreground/55 transition-colors duration-300 hover:text-primary"
           >
             ← All work
@@ -87,7 +116,7 @@ export function ProjectPage({ slug }: { slug: string }) {
           </div>
         </section>
 
-        <Image
+        <img
           src={project.image}
           alt={`${project.name} interface screenshot`}
           className="w-full bg-card object-cover outline outline-offset-[-1px] outline-border"
@@ -108,14 +137,16 @@ export function ProjectPage({ slug }: { slug: string }) {
           <div>
             <div className="label-mono mb-4 text-foreground/40">Next project</div>
             <Link
-              href={`/projects/${next.slug}`}
+              to="/projects/$slug"
+              params={{ slug: next.slug }}
               className="font-display text-3xl font-semibold tracking-tight transition-colors duration-300 hover:text-primary sm:text-4xl"
             >
               {next.name} <span className="text-primary">→</span>
             </Link>
           </div>
           <Link
-            href="/#contact"
+            to="/"
+            hash="contact"
             className="label-mono w-fit border-b border-input pb-1 transition-colors duration-300 hover:border-primary hover:text-primary"
           >
             Start a project <span className="text-primary">→</span>
