@@ -8,7 +8,7 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 // GitHub Pages project sites are served from /<repo>/. Set PAGES_BASE at build
 // time (the deploy workflow does this) and leave it unset everywhere else.
-const base = process.env.PAGES_BASE ?? "/";
+const base = process.env["PAGES_BASE"] ?? "/";
 
 export default defineConfig({
   vite: { base },
