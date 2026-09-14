@@ -1,12 +1,29 @@
-"use client";
-
-import Link from "next/link";
-import Image from "next/image";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
 
 import portrait from "@/assets/portrait.png";
 import { experience, projects, skills, socials, stack, RESUME_URL } from "@/data/portfolio";
+
+export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Boaz Serem — Software Engineer Portfolio" },
+      {
+        name: "description",
+        content:
+          "Portfolio of Boaz Serem, a software engineer in Nairobi building scalable web applications with Python, Django, React, Next.js, Node.js and TypeScript.",
+      },
+      { property: "og:title", content: "Boaz Serem — Software Engineer Portfolio" },
+      {
+        property: "og:description",
+        content:
+          "Selected work, experience, capabilities and contact details for Boaz Serem, a software engineer building scalable web applications.",
+      },
+    ],
+  }),
+  component: HomePage,
+});
 
 function Level({ level }: { level: number }) {
   return (
@@ -143,7 +160,7 @@ function ContactForm() {
   );
 }
 
-export default function HomePage() {
+function HomePage() {
   return (
     <div className="min-h-screen bg-background font-body text-foreground">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(125%_80%_at_18%_-12%,color-mix(in_oklab,var(--primary)_16%,transparent),transparent_58%)]" />
@@ -222,7 +239,7 @@ export default function HomePage() {
         >
           <div className="col-span-12 sm:col-span-4">
             <div className="label-mono mb-4 text-primary">01 — About</div>
-            <Image
+            <img
               src={portrait}
               alt="Portrait of Boaz Serem, software engineer"
               loading="lazy"
@@ -355,8 +372,8 @@ export default function HomePage() {
                       {project.year}
                     </span>
                   </div>
-                  <Link href={`/projects/${project.slug}`} className="block">
-                    <Image
+                  <Link to="/projects/$slug" params={{ slug: project.slug }} className="block">
+                    <img
                       src={project.image}
                       alt={`${project.name} interface screenshot`}
                       loading="lazy"
@@ -366,7 +383,8 @@ export default function HomePage() {
                   <div className="mt-4 flex items-baseline justify-between gap-4">
                     <h3 className="font-display text-2xl tracking-tight sm:text-3xl">
                       <Link
-                        href={`/projects/${project.slug}`}
+                        to="/projects/$slug"
+                        params={{ slug: project.slug }}
                         className="transition-colors duration-300 hover:text-primary"
                       >
                         {project.name}
