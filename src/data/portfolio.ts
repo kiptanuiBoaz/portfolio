@@ -1,5 +1,4 @@
 import notical from "@/assets/projects/notical.png";
-import type { StaticImageData } from "next/image";
 import wazibiz from "@/assets/projects/wazibiz.png";
 import geekgazette from "@/assets/projects/geekgazette.png";
 import harryPotter from "@/assets/projects/harry-potter.png";
@@ -13,7 +12,7 @@ export type Project = {
   summary: string;
   description: string;
   stack: string[];
-  image: StaticImageData;
+  image: string;
   deployLink: string;
   codeLink: string;
 };
@@ -84,7 +83,8 @@ export const projects: Project[] = [
     slug: "wazibiz-ecommerce",
     name: "WaziBiz Ecommerce",
     year: "2024",
-    summary: "Full commerce stack with Stripe card checkout and M-Pesa STK push for mobile money.",
+    summary:
+      "Full commerce stack with Stripe card checkout and M-Pesa STK push for mobile money.",
     description:
       "An eCommerce application that enables users to browse products, add items to their cart, and proceed to a secure checkout via card using Stripe and mobile money via M-Pesa. Developed using the MERN stack with additional support from Firebase for authentication and data storage. It demonstrates the successful integration of MERN, Firebase and Stripe to build a functional eCommerce platform.",
     stack: ["Node.js", "TypeScript", "React", "Firebase", "Redux"],
@@ -135,7 +135,8 @@ export const projects: Project[] = [
     slug: "simonsgame",
     name: "Simon Game",
     year: "2022",
-    summary: "The classic memory sequence game, built in pure JavaScript against the raw DOM.",
+    summary:
+      "The classic memory sequence game, built in pure JavaScript against the raw DOM.",
     description:
       "Simon, invented by Ralph H. Baer and Howard J. Morrison, is an electronic game that tests short-term memory skills. It presents a sequence of tones and lights for the user to replicate. As the user succeeds, the sequence lengthens and becomes more challenging. Using pure JavaScript I implemented this game, deepening my understanding of the DOM and JavaScript methods. Failing to replicate the pattern ends the game, requiring the player to restart.",
     stack: ["JavaScript", "HTML", "CSS"],
