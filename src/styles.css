@@ -58,7 +58,7 @@
 }
 
 :root {
-  --radius: 0rem;
+  --radius: 1rem;
   --background: oklch(0.155 0.006 60);
   --foreground: oklch(0.955 0.014 82);
   --card: oklch(0.224 0.007 60);
@@ -156,4 +156,35 @@
   line-height: 1.4;
   text-transform: uppercase;
   letter-spacing: 0.18em;
+}
+
+@utility gradient-text {
+  background-image: linear-gradient(
+    100deg,
+    var(--primary),
+    color-mix(in oklab, var(--primary) 55%, oklch(78% 0.15 250))
+  );
+  background-clip: text;
+  color: transparent;
+}
+
+@utility gradient-primary {
+  background-image: linear-gradient(
+    135deg,
+    var(--primary),
+    color-mix(in oklab, var(--primary) 55%, oklch(78% 0.15 250))
+  );
+}
+
+@utility gradient-border {
+  position: relative;
+  background-image: linear-gradient(var(--color-card), var(--color-card)),
+    linear-gradient(
+      135deg,
+      color-mix(in oklab, var(--primary) 55%, transparent),
+      color-mix(in oklab, var(--primary) 10%, transparent)
+    );
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  border: 1px solid transparent;
 }

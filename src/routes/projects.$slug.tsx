@@ -56,7 +56,7 @@ function ProjectPage() {
 
   return (
     <div className="min-h-screen bg-background font-body text-foreground">
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(125%_80%_at_18%_-12%,color-mix(in_oklab,var(--primary)_16%,transparent),transparent_58%)]" />
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(125%_80%_at_18%_-12%,color-mix(in_oklab,var(--primary)_16%,transparent),transparent_58%),radial-gradient(90%_60%_at_100%_0%,color-mix(in_oklab,oklch(78%_0.15_250)_14%,transparent),transparent_60%)]" />
 
       <div className="relative mx-auto max-w-[1180px] px-6 sm:px-10">
         <header className="flex items-center justify-between border-b border-border py-8">
@@ -119,7 +119,7 @@ function ProjectPage() {
         <img
           src={project.image}
           alt={`${project.name} interface screenshot`}
-          className="w-full bg-card object-cover outline outline-offset-[-1px] outline-border"
+          className="w-full rounded-3xl bg-card object-cover shadow-xl outline outline-offset-[-1px] outline-border"
         />
 
         <section className="grid grid-cols-12 gap-x-6 border-t border-border py-16 sm:py-20">

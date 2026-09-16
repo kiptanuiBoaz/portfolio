@@ -29,7 +29,10 @@ function Level({ level }: { level: number }) {
   return (
     <div className="flex items-center gap-1.5" aria-label={`${level} out of 5`}>
       {[1, 2, 3, 4, 5].map((i) => (
-        <span key={i} className={`h-1.5 w-6 ${i <= level ? "bg-primary" : "bg-foreground/20"}`} />
+        <span
+          key={i}
+          className={`h-1.5 w-6 rounded-full ${i <= level ? "gradient-primary" : "bg-foreground/20"}`}
+        />
       ))}
     </div>
   );
@@ -115,7 +118,7 @@ function ContactForm() {
             name="firstName"
             type="text"
             placeholder="Ada"
-            className="mt-2 w-full border-b border-input bg-transparent py-2 text-sm text-foreground transition-colors duration-300 outline-none placeholder:text-foreground/30 focus:border-primary"
+            className="mt-2 w-full rounded-lg border border-input bg-transparent px-3 py-2 text-sm text-foreground transition-colors duration-300 outline-none placeholder:text-foreground/30 focus:border-primary"
           />
         </label>
         <label className="block">
@@ -124,7 +127,7 @@ function ContactForm() {
             name="lastName"
             type="text"
             placeholder="Okafor"
-            className="mt-2 w-full border-b border-input bg-transparent py-2 text-sm text-foreground transition-colors duration-300 outline-none placeholder:text-foreground/30 focus:border-primary"
+            className="mt-2 w-full rounded-lg border border-input bg-transparent px-3 py-2 text-sm text-foreground transition-colors duration-300 outline-none placeholder:text-foreground/30 focus:border-primary"
           />
         </label>
       </div>
@@ -134,7 +137,7 @@ function ContactForm() {
           name="email"
           type="email"
           placeholder="you@studio.com"
-          className="mt-2 w-full border-b border-input bg-transparent py-2 text-sm text-foreground transition-colors duration-300 outline-none placeholder:text-foreground/30 focus:border-primary"
+          className="mt-2 w-full rounded-lg border border-input bg-transparent px-3 py-2 text-sm text-foreground transition-colors duration-300 outline-none placeholder:text-foreground/30 focus:border-primary"
         />
       </label>
       <label className="mt-6 block">
@@ -143,13 +146,13 @@ function ContactForm() {
           name="message"
           rows={3}
           placeholder="A product, a platform, a problem worth solving."
-          className="mt-2 w-full resize-none border-b border-input bg-transparent py-2 text-sm text-foreground transition-colors duration-300 outline-none placeholder:text-foreground/30 focus:border-primary"
+          className="mt-2 w-full resize-none rounded-lg border border-input bg-transparent px-3 py-2 text-sm text-foreground transition-colors duration-300 outline-none placeholder:text-foreground/30 focus:border-primary"
         />
       </label>
       <button
         type="submit"
         disabled={sending}
-        className="group mt-8 bg-primary px-7 py-3 font-display text-sm tracking-tight text-primary-foreground transition-colors duration-300 hover:bg-foreground disabled:opacity-60"
+        className="gradient-primary group mt-8 rounded-full px-7 py-3 font-display text-sm tracking-tight text-primary-foreground shadow-lg shadow-primary/20 transition-transform duration-300 hover:scale-105 disabled:opacity-60"
       >
         Send message{" "}
         <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
@@ -163,7 +166,7 @@ function ContactForm() {
 function HomePage() {
   return (
     <div className="min-h-screen bg-background font-body text-foreground">
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(125%_80%_at_18%_-12%,color-mix(in_oklab,var(--primary)_16%,transparent),transparent_58%)]" />
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(125%_80%_at_18%_-12%,color-mix(in_oklab,var(--primary)_16%,transparent),transparent_58%),radial-gradient(90%_60%_at_100%_0%,color-mix(in_oklab,oklch(78%_0.15_250)_14%,transparent),transparent_60%)]" />
 
       <div className="relative mx-auto max-w-[1180px] px-6 sm:px-10">
         <header className="flex items-center justify-between border-b border-border py-8">
@@ -190,7 +193,7 @@ function HomePage() {
           </nav>
           <a
             href="#contact"
-            className="label-mono inline-flex items-center gap-2 bg-primary px-4 py-3 text-primary-foreground transition-colors duration-300 hover:bg-foreground hover:text-background"
+            className="label-mono gradient-primary inline-flex items-center gap-2 rounded-full px-4 py-3 text-primary-foreground shadow-lg shadow-primary/20 transition-transform duration-300 hover:scale-105"
           >
             Contact me <span aria-hidden="true">→</span>
           </a>
@@ -205,7 +208,8 @@ function HomePage() {
             <h1 className="rise font-display text-[clamp(3.25rem,12vw,7rem)] leading-[0.92] font-semibold tracking-[-0.03em] text-balance [animation-delay:80ms]">
               Boaz
               <br />
-              Serem<span className="text-primary">.</span>
+              <span className="gradient-text">Serem</span>
+              <span className="text-primary">.</span>
             </h1>
             <p className="rise mt-9 max-w-[46ch] text-[15px] leading-relaxed text-pretty text-foreground/70 sm:text-base [animation-delay:160ms]">
               I build scalable, high-performance applications with Python, Django, Node.js, React
@@ -243,7 +247,7 @@ function HomePage() {
               src={portrait}
               alt="Portrait of Boaz Serem, software engineer"
               loading="lazy"
-              className="aspect-4/5 w-full bg-card object-cover outline outline-offset-[-1px] outline-border"
+              className="aspect-4/5 w-full rounded-3xl bg-card object-cover shadow-xl outline outline-offset-[-1px] outline-border"
             />
           </div>
           <div className="col-span-12 sm:col-span-7 sm:col-start-6">
@@ -270,7 +274,7 @@ function HomePage() {
               href={RESUME_URL}
               target="_blank"
               rel="noreferrer"
-              className="label-mono mt-8 inline-flex items-center gap-2 bg-primary px-5 py-3 text-primary-foreground transition-colors duration-300 hover:bg-foreground hover:text-background"
+              className="label-mono gradient-primary mt-8 inline-flex items-center gap-2 rounded-full px-5 py-3 text-primary-foreground shadow-lg shadow-primary/20 transition-transform duration-300 hover:scale-105"
             >
               View résumé <span aria-hidden="true">↓</span>
             </a>
@@ -377,7 +381,7 @@ function HomePage() {
                       src={project.image}
                       alt={`${project.name} interface screenshot`}
                       loading="lazy"
-                      className="aspect-4/3 w-full bg-card object-cover outline outline-offset-[-1px] outline-border transition-opacity duration-300 hover:opacity-80"
+                      className="aspect-4/3 w-full rounded-2xl bg-card object-cover shadow-lg outline outline-offset-[-1px] outline-border transition-opacity duration-300 hover:opacity-80"
                     />
                   </Link>
                   <div className="mt-4 flex items-baseline justify-between gap-4">
@@ -416,7 +420,7 @@ function HomePage() {
                     {project.stack.map((tag) => (
                       <span
                         key={tag}
-                        className="label-mono border border-border px-2 py-1 text-[10px] tracking-[0.1em] text-foreground/50"
+                        className="label-mono rounded-full border border-border px-3 py-1 text-[10px] tracking-[0.1em] text-foreground/50"
                       >
                         {tag}
                       </span>
