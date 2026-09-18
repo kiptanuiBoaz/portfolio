@@ -86,6 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Software engineer in Nairobi building scalable web applications with Python, Django, React, Next.js, Node.js and TypeScript.",
       },
       { name: "author", content: "Boaz Serem" },
+      { name: "theme-color", content: "#0a0a0a" },
       { property: "og:title", content: "Boaz Serem — Software Engineer" },
       {
         property: "og:description",
@@ -93,19 +94,55 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Software engineer in Nairobi building scalable web applications with Python, Django, React, Next.js, Node.js and TypeScript.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Boaz Serem" },
+      { property: "og:url", content: "https://kiptanuiboaz.github.io/portfolio/" },
+      {
+        property: "og:image",
+        content: "https://kiptanuiboaz.github.io/portfolio/android-chrome-512x512.png",
+      },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Boaz Serem — Software Engineer" },
+      {
+        name: "twitter:description",
+        content:
+          "Software engineer in Nairobi building scalable web applications with Python, Django, React, Next.js, Node.js and TypeScript.",
+      },
+      {
+        name: "twitter:image",
+        content: "https://kiptanuiboaz.github.io/portfolio/android-chrome-512x512.png",
+      },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
+      { rel: "canonical", href: "https://kiptanuiboaz.github.io/portfolio/" },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "manifest", href: "/site.webmanifest" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Boaz Serem",
+          jobTitle: "Software Engineer",
+          url: "https://kiptanuiboaz.github.io/portfolio/",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Nairobi",
+            addressCountry: "KE",
+          },
+          knowsAbout: ["Python", "Django", "React", "Next.js", "Node.js", "TypeScript"],
+        }),
       },
     ],
   }),
@@ -122,6 +159,12 @@ function RootShell({ children }: { children: ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+        >
+          Skip to content
+        </a>
         {children}
         <Scripts />
       </body>

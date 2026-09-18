@@ -41,17 +41,17 @@ function Level({ level }: { level: number }) {
 function HeroGraphic() {
   return (
     <div
-      className="pointer-events-none absolute inset-0 -top-12 -right-6 hidden opacity-40 lg:block lg:opacity-100"
+      className="pointer-events-none absolute inset-0 -top-12 -right-6 hidden opacity-70 lg:block lg:opacity-100"
       aria-hidden="true"
     >
-      <div className="relative h-full w-full pt-24 font-mono text-[10px] leading-[1.1] text-foreground/20">
+      <div className="relative h-full w-full pt-24 font-mono text-[10px] leading-[1.1] text-foreground/45">
         <div className="flex gap-4">
           <div className="flex flex-col gap-1">
-            <div className="text-primary/40">01 class Architecture {"{"}</div>
+            <div className="text-primary/80">01 class Architecture {"{"}</div>
             <div>&nbsp;&nbsp;constructor(data) {"{"}</div>
             <div>&nbsp;&nbsp;&nbsp;&nbsp;this.nodes = new Set();</div>
             <div>&nbsp;&nbsp;&nbsp;&nbsp;this.edges = [];</div>
-            <div className="text-primary/20">&nbsp;&nbsp;{"}"}</div>
+            <div className="text-primary/50">&nbsp;&nbsp;{"}"}</div>
             <div>&nbsp;&nbsp;async render() {"{"}</div>
             <div>&nbsp;&nbsp;&nbsp;&nbsp;const flow = await pipe(</div>
             <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.nodes,</div>
@@ -59,15 +59,15 @@ function HeroGraphic() {
             <div>&nbsp;&nbsp;&nbsp;&nbsp;);</div>
             <div>&nbsp;&nbsp;&nbsp;&nbsp;return flow.paint();</div>
             <div>&nbsp;&nbsp;{"}"}</div>
-            <div className="text-primary/40">{"}"}</div>
+            <div className="text-primary/80">{"}"}</div>
           </div>
-          <div className="hidden flex-col gap-1 border-l border-primary/10 pl-4 pt-12 xl:flex">
-            <div className="text-primary/60">[SYSTEM_READY]</div>
-            <div className="my-2 h-px w-24 bg-primary/20" />
+          <div className="hidden flex-col gap-1 border-l border-primary/30 pl-4 pt-12 xl:flex">
+            <div className="text-primary/90">[SYSTEM_READY]</div>
+            <div className="my-2 h-px w-24 bg-primary/40" />
             <div>LATENCY: 14ms</div>
             <div>THROUGHPUT: 1.2GB/s</div>
             <div>UPTIME: 99.99%</div>
-            <div className="mt-4 text-foreground/10">
+            <div className="mt-4 text-foreground/25">
               &lt;svg viewBox=&quot;0 0 100 100&quot;&gt;
               <br />
               &nbsp;&nbsp;&lt;path d=&quot;M10,50 Q30,10 50,50&quot; /&gt;
@@ -78,9 +78,9 @@ function HeroGraphic() {
         </div>
 
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="h-64 w-64 animate-pulse rounded-full border border-primary/10" />
-          <div className="absolute h-48 w-48 rotate-45 border border-foreground/5" />
-          <div className="absolute top-1/2 left-0 h-px w-full bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+          <div className="h-64 w-64 animate-pulse rounded-full border border-primary/30" />
+          <div className="absolute h-48 w-48 rotate-45 border border-foreground/15" />
+          <div className="absolute top-1/2 left-0 h-px w-full bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
         </div>
       </div>
     </div>
@@ -118,6 +118,8 @@ function ContactForm() {
             name="firstName"
             type="text"
             placeholder="Ada"
+            required
+            aria-required="true"
             className="mt-2 w-full rounded-lg border border-input bg-transparent px-3 py-2 text-sm text-foreground transition-colors duration-300 outline-none placeholder:text-foreground/30 focus:border-primary"
           />
         </label>
@@ -137,6 +139,8 @@ function ContactForm() {
           name="email"
           type="email"
           placeholder="you@studio.com"
+          required
+          aria-required="true"
           className="mt-2 w-full rounded-lg border border-input bg-transparent px-3 py-2 text-sm text-foreground transition-colors duration-300 outline-none placeholder:text-foreground/30 focus:border-primary"
         />
       </label>
@@ -146,6 +150,8 @@ function ContactForm() {
           name="message"
           rows={3}
           placeholder="A product, a platform, a problem worth solving."
+          required
+          aria-required="true"
           className="mt-2 w-full resize-none rounded-lg border border-input bg-transparent px-3 py-2 text-sm text-foreground transition-colors duration-300 outline-none placeholder:text-foreground/30 focus:border-primary"
         />
       </label>
@@ -170,12 +176,12 @@ function HomePage() {
 
       <div className="relative mx-auto max-w-[1180px] px-6 sm:px-10">
         <header className="flex items-center justify-between border-b border-border py-8">
-          <div className="font-display text-sm tracking-tight">
+          <a href="#main-content" className="font-display text-sm tracking-tight">
             <span className="text-primary">BK</span>
             <span className="mx-2 text-foreground/30">/</span>
             <span className="text-foreground/70">Serem</span>
-          </div>
-          <nav className="hidden items-center gap-7 sm:flex">
+          </a>
+          <nav aria-label="Primary" className="hidden items-center gap-7 sm:flex">
             {[
               ["01 About", "#about"],
               ["02 Skills", "#skills"],
@@ -199,257 +205,260 @@ function HomePage() {
           </a>
         </header>
 
-        {/* Hero */}
-        <section className="relative grid grid-cols-12 gap-x-6 pt-16 pb-16 sm:pt-24 sm:pb-24">
-          <div className="col-span-12 lg:col-span-7">
-            <div className="rise label-mono mb-7 tracking-[0.22em] text-primary">
-              Software Engineer · Design-Forward Engineering
-            </div>
-            <h1 className="rise font-display text-[clamp(3.25rem,12vw,7rem)] leading-[0.92] font-semibold tracking-[-0.03em] text-balance [animation-delay:80ms]">
-              Boaz
-              <br />
-              <span className="gradient-text">Serem</span>
-              <span className="text-primary">.</span>
-            </h1>
-            <p className="rise mt-9 max-w-[46ch] text-[15px] leading-relaxed text-pretty text-foreground/70 sm:text-base [animation-delay:160ms]">
-              I build scalable, high-performance applications with Python, Django, Node.js, React
-              and Next.js. I work across AI-powered features, cloud infrastructure and automated
-              delivery to create user-focused systems that hold up in production.
-            </p>
-          </div>
-          <div className="relative col-span-12 mt-12 min-h-[320px] lg:col-span-5 lg:mt-0">
-            <HeroGraphic />
-            <div className="rise relative z-10 sm:text-right [animation-delay:240ms]">
-              <div className="label-mono text-foreground/40">
-                Available for
-                <br />
-                selected work · 2026
+        <main id="main-content">
+          {/* Hero */}
+          <section className="relative grid grid-cols-12 gap-x-6 pt-16 pb-16 sm:pt-24 sm:pb-24">
+            <div className="col-span-12 lg:col-span-7">
+              <div className="rise label-mono mb-7 tracking-[0.22em] text-primary">
+                Software Engineer · Design-Forward Engineering
               </div>
+              <h1 className="rise font-display text-[clamp(3.25rem,12vw,7rem)] leading-[0.92] font-semibold tracking-[-0.03em] text-balance [animation-delay:80ms]">
+                Boaz
+                <br />
+                <span className="gradient-text">Serem</span>
+                <span className="text-primary">.</span>
+              </h1>
+              <p className="rise mt-9 max-w-[46ch] text-[15px] leading-relaxed text-pretty text-foreground/70 sm:text-base [animation-delay:160ms]">
+                I build scalable web apps with Python, Django, React and Next.js — from AI features
+                to cloud infrastructure.
+              </p>
               <a
                 href="#contact"
-                className="rise label-mono mt-5 inline-flex items-center gap-2 border-b border-input pb-1 text-foreground transition-colors duration-300 hover:border-primary hover:text-primary [animation-delay:300ms]"
+                className="rise label-mono gradient-primary mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3 text-primary-foreground shadow-lg shadow-primary/20 transition-transform duration-300 hover:scale-105 [animation-delay:220ms]"
               >
-                Start a project
-                <span className="text-primary">→</span>
+                Start a project <span aria-hidden="true">→</span>
               </a>
             </div>
-          </div>
-        </section>
-
-        {/* About */}
-        <section
-          id="about"
-          className="grid grid-cols-12 gap-x-6 border-t border-border py-16 sm:py-20"
-        >
-          <div className="col-span-12 sm:col-span-4">
-            <div className="label-mono mb-4 text-primary">01 — About</div>
-            <img
-              src={portrait}
-              alt="Portrait of Boaz Serem, software engineer"
-              loading="lazy"
-              className="aspect-4/5 w-full rounded-3xl bg-card object-cover shadow-xl outline outline-offset-[-1px] outline-border"
-            />
-          </div>
-          <div className="col-span-12 sm:col-span-7 sm:col-start-6">
-            <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-              A developer who treats the browser like a print shop.
-            </h2>
-            <p className="max-w-[58ch] text-[15px] leading-relaxed text-pretty text-foreground/70">
-              I am a software engineer based in Nairobi, Kenya, with experience delivering scalable
-              full-stack and mobile applications from concept to deployment. My work spans
-              AI-powered features, responsive interfaces, cloud infrastructure, API design and
-              automated CI/CD workflows.
-            </p>
-            <div className="mt-8 border-t border-border pt-6">
-              <div className="label-mono mb-4 text-foreground/40">Tech stack</div>
-              <div className="flex flex-wrap gap-x-8 gap-y-3">
-                {stack.map((item) => (
-                  <span key={item} className="font-mono text-xs text-foreground/70">
-                    {item}
-                  </span>
-                ))}
+            <div className="relative col-span-12 mt-12 min-h-[320px] lg:col-span-5 lg:mt-0">
+              <HeroGraphic />
+              <div className="rise relative z-10 sm:text-right [animation-delay:240ms]">
+                <div className="label-mono text-foreground/40">
+                  Available for
+                  <br />
+                  selected work · 2026
+                </div>
               </div>
             </div>
-            <a
-              href={RESUME_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="label-mono gradient-primary mt-8 inline-flex items-center gap-2 rounded-full px-5 py-3 text-primary-foreground shadow-lg shadow-primary/20 transition-transform duration-300 hover:scale-105"
-            >
-              View résumé <span aria-hidden="true">↓</span>
-            </a>
-          </div>
-        </section>
+          </section>
 
-        {/* Skills */}
-        <section id="skills" className="border-t border-border py-16 sm:py-20">
-          <div className="mb-10 flex items-end justify-between">
-            <div>
-              <div className="label-mono mb-4 text-primary">02 — Skills</div>
-              <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-                Capabilities, graded.
-              </h2>
+          {/* About */}
+          <section
+            id="about"
+            className="grid grid-cols-12 gap-x-6 border-t border-border py-16 sm:py-20"
+          >
+            <div className="col-span-12 sm:col-span-4">
+              <div className="label-mono mb-4 text-primary">01 — About</div>
+              <img
+                src={portrait}
+                alt="Portrait of Boaz Serem, software engineer"
+                loading="lazy"
+                className="aspect-4/5 w-full rounded-3xl bg-card object-cover shadow-xl outline outline-offset-[-1px] outline-border"
+              />
             </div>
-            <div className="label-mono hidden text-foreground/40 sm:block">Scale 1 — 5</div>
-          </div>
-          <div className="grid grid-cols-1 gap-x-12 sm:grid-cols-2">
-            {skills.map((skill) => (
-              <div
-                key={skill.text}
-                className="flex items-center justify-between border-t border-border py-4 last:border-b"
-              >
-                <div>
-                  <div className="font-display text-base tracking-tight">{skill.text}</div>
-                  <div className="label-mono text-[10px] text-foreground/40">{skill.note}</div>
-                </div>
-                <Level level={skill.level} />
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Experience */}
-        <section id="experience" className="border-t border-border py-16 sm:py-20">
-          <div className="mb-10 flex items-end justify-between">
-            <div>
-              <div className="label-mono mb-4 text-primary">03 — Experience</div>
-              <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-                Building in production.
+            <div className="col-span-12 sm:col-span-7 sm:col-start-6">
+              <h2 className="mb-6 font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+                A developer who treats the browser like a print shop.
               </h2>
-            </div>
-            <div className="label-mono hidden text-foreground/40 sm:block">2023 — Present</div>
-          </div>
-          <div className="space-y-10">
-            {experience.map((role) => (
-              <article key={`${role.company}-${role.role}`} className="border-t border-border pt-5">
-                <div className="grid gap-4 sm:grid-cols-[1fr_auto] sm:items-start">
-                  <div>
-                    <h3 className="font-display text-xl tracking-tight">{role.role}</h3>
-                    <div className="label-mono mt-2 text-primary">{role.company}</div>
-                  </div>
-                  <div className="label-mono text-foreground/40 sm:text-right">
-                    {role.dates}
-                    <br />
-                    {role.location}
-                  </div>
-                </div>
-                <ul className="mt-5 grid gap-2 text-sm leading-relaxed text-foreground/65 sm:grid-cols-2 sm:gap-x-10">
-                  {role.highlights.map((highlight) => (
-                    <li
-                      key={highlight}
-                      className="before:mr-2 before:text-primary before:content-['+']"
-                    >
-                      {highlight}
-                    </li>
+              <p className="max-w-[58ch] text-[15px] leading-relaxed text-pretty text-foreground/70">
+                I am a software engineer based in Nairobi, Kenya, with experience delivering
+                scalable full-stack and mobile applications from concept to deployment. My work
+                spans AI-powered features, responsive interfaces, cloud infrastructure, API design
+                and automated CI/CD workflows.
+              </p>
+              <div className="mt-8 border-t border-border pt-6">
+                <div className="label-mono mb-4 text-foreground/40">Tech stack</div>
+                <div className="flex flex-wrap gap-x-8 gap-y-3">
+                  {stack.map((item) => (
+                    <span key={item} className="font-mono text-xs text-foreground/70">
+                      {item}
+                    </span>
                   ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        {/* Work */}
-        <section id="work" className="border-t border-border py-16 sm:py-20">
-          <div className="mb-10 flex items-end justify-between">
-            <div>
-              <div className="label-mono mb-4 text-primary">04 — Work</div>
-              <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-                Selected projects.
-              </h2>
+                </div>
+              </div>
+              <a
+                href={RESUME_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="label-mono gradient-primary mt-8 inline-flex items-center gap-2 rounded-full px-5 py-3 text-primary-foreground shadow-lg shadow-primary/20 transition-transform duration-300 hover:scale-105"
+              >
+                View résumé <span aria-hidden="true">↓</span>
+              </a>
             </div>
-            <div className="label-mono hidden text-foreground/40 sm:block">2022 — 2026</div>
-          </div>
-          <div className="grid grid-cols-1 gap-x-6 md:grid-cols-3">
-            {projects.map((project, index) => {
-              return (
-                <article
-                  key={project.slug}
-                  className={`col-span-1${
-                    index === 0 ? "" : index === 1 ? "mt-12 md:mt-0" : "mt-12"
-                  }`}
+          </section>
+
+          {/* Skills */}
+          <section id="skills" className="border-t border-border py-16 sm:py-20">
+            <div className="mb-10 flex items-end justify-between">
+              <div>
+                <div className="label-mono mb-4 text-primary">02 — Skills</div>
+                <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+                  Capabilities, graded.
+                </h2>
+              </div>
+              <div className="label-mono hidden text-foreground/40 sm:block">Scale 1 — 5</div>
+            </div>
+            <div className="grid grid-cols-1 gap-x-12 sm:grid-cols-2">
+              {skills.map((skill) => (
+                <div
+                  key={skill.text}
+                  className="flex items-center justify-between border-t border-border py-4 last:border-b"
                 >
-                  <div className="mb-4 flex items-baseline justify-between">
-                    <span className="font-mono text-xs text-primary">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span className="label-mono text-[10px] text-foreground/40">
-                      {project.year}
-                    </span>
+                  <div>
+                    <div className="font-display text-base tracking-tight">{skill.text}</div>
+                    <div className="label-mono text-[10px] text-foreground/40">{skill.note}</div>
                   </div>
-                  <Link to="/projects/$slug" params={{ slug: project.slug }} className="block">
-                    <img
-                      src={project.image}
-                      alt={`${project.name} interface screenshot`}
-                      loading="lazy"
-                      className="aspect-4/3 w-full rounded-2xl bg-card object-cover shadow-lg outline outline-offset-[-1px] outline-border transition-opacity duration-300 hover:opacity-80"
-                    />
-                  </Link>
-                  <div className="mt-4 flex items-baseline justify-between gap-4">
-                    <h3 className="font-display text-2xl tracking-tight sm:text-3xl">
-                      <Link
-                        to="/projects/$slug"
-                        params={{ slug: project.slug }}
-                        className="transition-colors duration-300 hover:text-primary"
-                      >
-                        {project.name}
-                      </Link>
-                    </h3>
-                    <div className="flex gap-4">
-                      <a
-                        href={project.deployLink}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="label-mono text-[11px] text-foreground/60 transition-colors duration-300 hover:text-primary"
-                      >
-                        Live
-                      </a>
-                      <a
-                        href={project.codeLink}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="label-mono text-[11px] text-foreground/60 transition-colors duration-300 hover:text-primary"
-                      >
-                        Code
-                      </a>
+                  <Level level={skill.level} />
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Experience */}
+          <section id="experience" className="border-t border-border py-16 sm:py-20">
+            <div className="mb-10 flex items-end justify-between">
+              <div>
+                <div className="label-mono mb-4 text-primary">03 — Experience</div>
+                <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+                  Building in production.
+                </h2>
+              </div>
+              <div className="label-mono hidden text-foreground/40 sm:block">2023 — Present</div>
+            </div>
+            <div className="space-y-10">
+              {experience.map((role) => (
+                <article
+                  key={`${role.company}-${role.role}`}
+                  className="border-t border-border pt-5"
+                >
+                  <div className="grid gap-4 sm:grid-cols-[1fr_auto] sm:items-start">
+                    <div>
+                      <h3 className="font-display text-xl tracking-tight">{role.role}</h3>
+                      <div className="label-mono mt-2 text-primary">{role.company}</div>
+                    </div>
+                    <div className="label-mono text-foreground/40 sm:text-right">
+                      {role.dates}
+                      <br />
+                      {role.location}
                     </div>
                   </div>
-                  <p className="mt-2 max-w-[52ch] text-sm leading-relaxed text-pretty text-foreground/60">
-                    {project.summary}
-                  </p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {project.stack.map((tag) => (
-                      <span
-                        key={tag}
-                        className="label-mono rounded-full border border-border px-3 py-1 text-[10px] tracking-[0.1em] text-foreground/50"
+                  <ul className="mt-5 grid gap-2 text-sm leading-relaxed text-foreground/65 sm:grid-cols-2 sm:gap-x-10">
+                    {role.highlights.map((highlight) => (
+                      <li
+                        key={highlight}
+                        className="before:mr-2 before:text-primary before:content-['+']"
                       >
-                        {tag}
-                      </span>
+                        {highlight}
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </article>
-              );
-            })}
-          </div>
-        </section>
+              ))}
+            </div>
+          </section>
 
-        {/* Contact */}
-        <section
-          id="contact"
-          className="grid grid-cols-12 gap-x-6 border-t border-border py-16 sm:py-20"
-        >
-          <div className="col-span-12 sm:col-span-5">
-            <div className="label-mono mb-4 text-primary">05 — Contact</div>
-            <h2 className="font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
-              Let's make something considered.
-            </h2>
-            <p className="mt-6 max-w-[40ch] text-[15px] leading-relaxed text-pretty text-foreground/65">
-              I thrive in fast-paced settings and stay close to where web development is heading.
-              Tell me about the project, the timeline, and what good looks like.
-            </p>
-            <div className="mt-8 font-mono text-xs text-foreground/60">boaserem022@gmail.com</div>
-          </div>
-          <ContactForm />
-        </section>
+          {/* Work */}
+          <section id="work" className="border-t border-border py-16 sm:py-20">
+            <div className="mb-10 flex items-end justify-between">
+              <div>
+                <div className="label-mono mb-4 text-primary">04 — Work</div>
+                <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+                  Selected projects.
+                </h2>
+              </div>
+              <div className="label-mono hidden text-foreground/40 sm:block">2022 — 2026</div>
+            </div>
+            <div className="grid grid-cols-1 gap-x-6 md:grid-cols-3">
+              {projects.map((project, index) => {
+                return (
+                  <article
+                    key={project.slug}
+                    className={`col-span-1${
+                      index === 0 ? "" : index === 1 ? "mt-12 md:mt-0" : "mt-12"
+                    }`}
+                  >
+                    <div className="mb-4 flex items-baseline justify-between">
+                      <span className="font-mono text-xs text-primary">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span className="label-mono text-[10px] text-foreground/40">
+                        {project.year}
+                      </span>
+                    </div>
+                    <Link to="/projects/$slug" params={{ slug: project.slug }} className="block">
+                      <img
+                        src={project.image}
+                        alt={`${project.name} interface screenshot`}
+                        loading="lazy"
+                        className="aspect-4/3 w-full rounded-2xl bg-card object-cover shadow-lg outline outline-offset-[-1px] outline-border transition-opacity duration-300 hover:opacity-80"
+                      />
+                    </Link>
+                    <div className="mt-4 flex items-baseline justify-between gap-4">
+                      <h3 className="font-display text-2xl tracking-tight sm:text-3xl">
+                        <Link
+                          to="/projects/$slug"
+                          params={{ slug: project.slug }}
+                          className="transition-colors duration-300 hover:text-primary"
+                        >
+                          {project.name}
+                        </Link>
+                      </h3>
+                      <div className="flex gap-4">
+                        <a
+                          href={project.deployLink}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="label-mono text-[11px] text-foreground/60 transition-colors duration-300 hover:text-primary"
+                        >
+                          Live
+                        </a>
+                        <a
+                          href={project.codeLink}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="label-mono text-[11px] text-foreground/60 transition-colors duration-300 hover:text-primary"
+                        >
+                          Code
+                        </a>
+                      </div>
+                    </div>
+                    <p className="mt-2 max-w-[52ch] text-sm leading-relaxed text-pretty text-foreground/60">
+                      {project.summary}
+                    </p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {project.stack.map((tag) => (
+                        <span
+                          key={tag}
+                          className="label-mono rounded-full border border-border px-3 py-1 text-[10px] tracking-[0.1em] text-foreground/50"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </section>
+
+          {/* Contact */}
+          <section
+            id="contact"
+            className="grid grid-cols-12 gap-x-6 border-t border-border py-16 sm:py-20"
+          >
+            <div className="col-span-12 sm:col-span-5">
+              <div className="label-mono mb-4 text-primary">05 — Contact</div>
+              <h2 className="font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
+                Let's make something considered.
+              </h2>
+              <p className="mt-6 max-w-[40ch] text-[15px] leading-relaxed text-pretty text-foreground/65">
+                I thrive in fast-paced settings and stay close to where web development is heading.
+                Tell me about the project, the timeline, and what good looks like.
+              </p>
+              <div className="mt-8 font-mono text-xs text-foreground/60">boaserem022@gmail.com</div>
+            </div>
+            <ContactForm />
+          </section>
+        </main>
 
         <footer className="flex flex-col items-start justify-between gap-6 border-t border-border py-10 sm:flex-row sm:items-center">
           <div className="label-mono text-foreground/45">
