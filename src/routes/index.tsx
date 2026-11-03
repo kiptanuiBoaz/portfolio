@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { toast } from "sonner";
 
 import portrait from "@/assets/portrait.png";
@@ -238,6 +239,39 @@ function HomePage() {
                   selected work · 2026
                 </div>
               </div>
+              <nav
+                aria-label="Hero social links"
+                className="relative z-20 mt-8 flex items-center gap-3 sm:justify-end"
+              >
+                <a
+                  href="https://github.com/kiptanuiBoaz"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="GitHub"
+                  title="GitHub"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground/70 transition-colors duration-300 hover:border-primary hover:text-primary"
+                >
+                  <Github className="h-5 w-5" aria-hidden="true" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/boaz-serem-466154217/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="LinkedIn"
+                  title="LinkedIn"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground/70 transition-colors duration-300 hover:border-primary hover:text-primary"
+                >
+                  <Linkedin className="h-5 w-5" aria-hidden="true" />
+                </a>
+                <a
+                  href="mailto:boaz.k.serem@gmail.com"
+                  aria-label="Email Boaz Serem"
+                  title="Email Boaz Serem"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground/70 transition-colors duration-300 hover:border-primary hover:text-primary"
+                >
+                  <Mail className="h-5 w-5" aria-hidden="true" />
+                </a>
+              </nav>
             </div>
           </section>
 
